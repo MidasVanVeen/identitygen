@@ -1,5 +1,3 @@
-// include wxWidgets
-#include <wx/wx.h>
 #include "Main.h"
 
 Main::Main(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style):
@@ -50,35 +48,33 @@ Main::Main(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
     // load all lines from names database into vector
-    std::ifstream namesFILE("data/names.csv");
+    std::ifstream namesFILE("/usr/bin/identitygen_/data/names.csv");
     std::string nameline;
     while (std::getline(namesFILE, nameline)) {
         this->namefilelines.push_back(nameline);
     }
 
     // load all lines from address database into vector
-    std::ifstream addressFILE("data/address_list.csv");
+    std::ifstream addressFILE("/usr/bin/identitygen_/data/address_list.csv");
     std::string addressline;
     while (std::getline(addressFILE, addressline)) {
         this->addressfilelines.push_back(addressline);
     }
 
     // load all lines from email providers database into vector
-    std::ifstream emailFILE("data/emailProviders.csv");
+    std::ifstream emailFILE("/usr/bin/identitygen_/data/emailProviders.csv");
     std::string emailline;
     while (std::getline(emailFILE,emailline)) {
         this->emailfilelines.push_back(emailline);
     }
 
     // do the same for random words list
-    std::ifstream randomwordsFILE("data/random_words.csv");
+    std::ifstream randomwordsFILE("/usr/bin/identitygen_/data/random_words.csv");
     std::string randomwordsline;
     while (std::getline(randomwordsFILE, randomwordsline)) {
         this->randomwordsfilelines.push_back(randomwordsline);
     }
-
 }
-
 
 // event table
 BEGIN_EVENT_TABLE(Main, wxFrame)
